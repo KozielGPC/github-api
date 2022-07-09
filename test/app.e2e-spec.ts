@@ -54,7 +54,7 @@ describe('AppController (e2e)', () => {
       private_gists: 0,
       total_private_repos: 6,
       owned_private_repos: 6,
-      disk_usage: 38161,
+      disk_usage: 38246,
       collaborators: 0,
       two_factor_authentication: false,
       plan: {
