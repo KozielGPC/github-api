@@ -7,7 +7,6 @@ export class GithubController {
 
     @Get('users')
     async listUsers(@Query() query: { since: number }) {
-
         return this.githubService.listUsers(query.since);
     }
 
