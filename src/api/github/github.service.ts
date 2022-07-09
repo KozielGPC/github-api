@@ -8,7 +8,7 @@ export class GithubService {
     constructor(private readonly httpService: HttpService) { require('dotenv').config(); }
 
     async listUsers(since) {
-        if (typeof since !== 'number') {
+        if (parseInt(since) < 0) {
             since = 0;
         }
         const url = `https://api.github.com/users?since=${since}&per_page=10`;
