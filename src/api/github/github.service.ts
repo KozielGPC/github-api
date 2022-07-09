@@ -7,7 +7,7 @@ export class GithubService {
     constructor(private readonly httpService: HttpService) { }
 
     async listUsers(since) {
-        const url = `https://api.github.com/users?since=${since}&per_page=1`;
+        const url = `https://api.github.com/users?since=${since}&per_page=10`;
         const { data } = await firstValueFrom(this.httpService.get(url));
         const nextPage = `http://localhost:3000/api/users?since=${parseInt(since) + 10}&per_page=10`;
         return { nextPage, data };
