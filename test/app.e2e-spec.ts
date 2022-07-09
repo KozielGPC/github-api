@@ -3,6 +3,8 @@ import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
 import { AppModule } from './../src/app.module';
 
+require('dotenv').config();
+
 describe('AppController (e2e)', () => {
   let app: INestApplication;
 
@@ -27,9 +29,214 @@ describe('AppController (e2e)', () => {
       .expect(500)
   })
 
-  it('should return the next 10 users starting on id 2500 and the link for the next page', () => {
-    const data = { "nextPage": "http://localhost:3000/api/users?since=2510&per_page=10", "data": [{ "login": "kdaigle", "id": 2501, "node_id": "MDQ6VXNlcjI1MDE=", "avatar_url": "https://avatars.githubusercontent.com/u/2501?v=4", "gravatar_id": "", "url": "https://api.github.com/users/kdaigle", "html_url": "https://github.com/kdaigle", "followers_url": "https://api.github.com/users/kdaigle/followers", "following_url": "https://api.github.com/users/kdaigle/following{/other_user}", "gists_url": "https://api.github.com/users/kdaigle/gists{/gist_id}", "starred_url": "https://api.github.com/users/kdaigle/starred{/owner}{/repo}", "subscriptions_url": "https://api.github.com/users/kdaigle/subscriptions", "organizations_url": "https://api.github.com/users/kdaigle/orgs", "repos_url": "https://api.github.com/users/kdaigle/repos", "events_url": "https://api.github.com/users/kdaigle/events{/privacy}", "received_events_url": "https://api.github.com/users/kdaigle/received_events", "type": "User", "site_admin": true }] }
-    return request(app.getHttpServer()).get('/api/users?since=2500')
+  it('should return the next 10 users starting on id 5 and the link for the next page', () => {
+    const api_url = process.env.API_URL;
+    const data = {
+      "nextPage": api_url + "/api/users?since=15&per_page=10",
+      "data": [
+        {
+          "login": "ivey",
+          "id": 6,
+          "node_id": "MDQ6VXNlcjY=",
+          "avatar_url": "https://avatars.githubusercontent.com/u/6?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/ivey",
+          "html_url": "https://github.com/ivey",
+          "followers_url": "https://api.github.com/users/ivey/followers",
+          "following_url": "https://api.github.com/users/ivey/following{/other_user}",
+          "gists_url": "https://api.github.com/users/ivey/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/ivey/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/ivey/subscriptions",
+          "organizations_url": "https://api.github.com/users/ivey/orgs",
+          "repos_url": "https://api.github.com/users/ivey/repos",
+          "events_url": "https://api.github.com/users/ivey/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/ivey/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        {
+          "login": "evanphx",
+          "id": 7,
+          "node_id": "MDQ6VXNlcjc=",
+          "avatar_url": "https://avatars.githubusercontent.com/u/7?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/evanphx",
+          "html_url": "https://github.com/evanphx",
+          "followers_url": "https://api.github.com/users/evanphx/followers",
+          "following_url": "https://api.github.com/users/evanphx/following{/other_user}",
+          "gists_url": "https://api.github.com/users/evanphx/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/evanphx/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/evanphx/subscriptions",
+          "organizations_url": "https://api.github.com/users/evanphx/orgs",
+          "repos_url": "https://api.github.com/users/evanphx/repos",
+          "events_url": "https://api.github.com/users/evanphx/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/evanphx/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        {
+          "login": "vanpelt",
+          "id": 17,
+          "node_id": "MDQ6VXNlcjE3",
+          "avatar_url": "https://avatars.githubusercontent.com/u/17?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/vanpelt",
+          "html_url": "https://github.com/vanpelt",
+          "followers_url": "https://api.github.com/users/vanpelt/followers",
+          "following_url": "https://api.github.com/users/vanpelt/following{/other_user}",
+          "gists_url": "https://api.github.com/users/vanpelt/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/vanpelt/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/vanpelt/subscriptions",
+          "organizations_url": "https://api.github.com/users/vanpelt/orgs",
+          "repos_url": "https://api.github.com/users/vanpelt/repos",
+          "events_url": "https://api.github.com/users/vanpelt/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/vanpelt/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        {
+          "login": "wayneeseguin",
+          "id": 18,
+          "node_id": "MDQ6VXNlcjE4",
+          "avatar_url": "https://avatars.githubusercontent.com/u/18?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/wayneeseguin",
+          "html_url": "https://github.com/wayneeseguin",
+          "followers_url": "https://api.github.com/users/wayneeseguin/followers",
+          "following_url": "https://api.github.com/users/wayneeseguin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/wayneeseguin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/wayneeseguin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/wayneeseguin/subscriptions",
+          "organizations_url": "https://api.github.com/users/wayneeseguin/orgs",
+          "repos_url": "https://api.github.com/users/wayneeseguin/repos",
+          "events_url": "https://api.github.com/users/wayneeseguin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/wayneeseguin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        {
+          "login": "brynary",
+          "id": 19,
+          "node_id": "MDQ6VXNlcjE5",
+          "avatar_url": "https://avatars.githubusercontent.com/u/19?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/brynary",
+          "html_url": "https://github.com/brynary",
+          "followers_url": "https://api.github.com/users/brynary/followers",
+          "following_url": "https://api.github.com/users/brynary/following{/other_user}",
+          "gists_url": "https://api.github.com/users/brynary/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/brynary/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/brynary/subscriptions",
+          "organizations_url": "https://api.github.com/users/brynary/orgs",
+          "repos_url": "https://api.github.com/users/brynary/repos",
+          "events_url": "https://api.github.com/users/brynary/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/brynary/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        {
+          "login": "kevinclark",
+          "id": 20,
+          "node_id": "MDQ6VXNlcjIw",
+          "avatar_url": "https://avatars.githubusercontent.com/u/20?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/kevinclark",
+          "html_url": "https://github.com/kevinclark",
+          "followers_url": "https://api.github.com/users/kevinclark/followers",
+          "following_url": "https://api.github.com/users/kevinclark/following{/other_user}",
+          "gists_url": "https://api.github.com/users/kevinclark/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/kevinclark/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/kevinclark/subscriptions",
+          "organizations_url": "https://api.github.com/users/kevinclark/orgs",
+          "repos_url": "https://api.github.com/users/kevinclark/repos",
+          "events_url": "https://api.github.com/users/kevinclark/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/kevinclark/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        {
+          "login": "technoweenie",
+          "id": 21,
+          "node_id": "MDQ6VXNlcjIx",
+          "avatar_url": "https://avatars.githubusercontent.com/u/21?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/technoweenie",
+          "html_url": "https://github.com/technoweenie",
+          "followers_url": "https://api.github.com/users/technoweenie/followers",
+          "following_url": "https://api.github.com/users/technoweenie/following{/other_user}",
+          "gists_url": "https://api.github.com/users/technoweenie/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/technoweenie/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/technoweenie/subscriptions",
+          "organizations_url": "https://api.github.com/users/technoweenie/orgs",
+          "repos_url": "https://api.github.com/users/technoweenie/repos",
+          "events_url": "https://api.github.com/users/technoweenie/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/technoweenie/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        {
+          "login": "macournoyer",
+          "id": 22,
+          "node_id": "MDQ6VXNlcjIy",
+          "avatar_url": "https://avatars.githubusercontent.com/u/22?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/macournoyer",
+          "html_url": "https://github.com/macournoyer",
+          "followers_url": "https://api.github.com/users/macournoyer/followers",
+          "following_url": "https://api.github.com/users/macournoyer/following{/other_user}",
+          "gists_url": "https://api.github.com/users/macournoyer/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/macournoyer/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/macournoyer/subscriptions",
+          "organizations_url": "https://api.github.com/users/macournoyer/orgs",
+          "repos_url": "https://api.github.com/users/macournoyer/repos",
+          "events_url": "https://api.github.com/users/macournoyer/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/macournoyer/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        {
+          "login": "takeo",
+          "id": 23,
+          "node_id": "MDQ6VXNlcjIz",
+          "avatar_url": "https://avatars.githubusercontent.com/u/23?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/takeo",
+          "html_url": "https://github.com/takeo",
+          "followers_url": "https://api.github.com/users/takeo/followers",
+          "following_url": "https://api.github.com/users/takeo/following{/other_user}",
+          "gists_url": "https://api.github.com/users/takeo/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/takeo/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/takeo/subscriptions",
+          "organizations_url": "https://api.github.com/users/takeo/orgs",
+          "repos_url": "https://api.github.com/users/takeo/repos",
+          "events_url": "https://api.github.com/users/takeo/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/takeo/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        {
+          "login": "caged",
+          "id": 25,
+          "node_id": "MDQ6VXNlcjI1",
+          "avatar_url": "https://avatars.githubusercontent.com/u/25?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/caged",
+          "html_url": "https://github.com/caged",
+          "followers_url": "https://api.github.com/users/caged/followers",
+          "following_url": "https://api.github.com/users/caged/following{/other_user}",
+          "gists_url": "https://api.github.com/users/caged/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/caged/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/caged/subscriptions",
+          "organizations_url": "https://api.github.com/users/caged/orgs",
+          "repos_url": "https://api.github.com/users/caged/repos",
+          "events_url": "https://api.github.com/users/caged/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/caged/received_events",
+          "type": "User",
+          "site_admin": false
+        }
+      ]
+    }
+    return request(app.getHttpServer()).get('/api/users?since=5')
       .expect(200)
       .expect(data)
   })
