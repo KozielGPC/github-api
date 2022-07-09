@@ -13,14 +13,14 @@ export class GithubService {
         return { nextPage, data };
     }
 
-    async userDetails(name) {
-        const url = `https://api.github.com/users/${name}`;
+    async userDetails(username) {
+        const url = `https://api.github.com/users/${username}`;
         const { data } = await firstValueFrom(this.httpService.get(url));
         return data;
     }
 
-    async userRepos(name) {
-        const url = `https://api.github.com/users/${name}/repos`;
+    async userRepos(username) {
+        const url = `https://api.github.com/users/${username}/repos`;
         const { data } = await firstValueFrom(this.httpService.get(url));
         return data;
     }
