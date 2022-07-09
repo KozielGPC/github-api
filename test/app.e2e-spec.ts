@@ -79,7 +79,7 @@ describe('AppController (e2e)', () => {
       .expect(data)
   })
 
-  it('should return the next 10 users starting on id 5 and the link for the next page', () => {
+  it('should return a list of 10 users starting since id 5 and the link for the next page', () => {
     const api_url = process.env.API_URL;
     const data = {
       next_page: api_url + '/api/users?since=15&per_page=10',
@@ -2223,4 +2223,5 @@ describe('AppController (e2e)', () => {
       .expect(404)
       .expect(data)
   })
+
 });
