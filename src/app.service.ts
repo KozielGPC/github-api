@@ -6,8 +6,11 @@ import { firstValueFrom, map } from 'rxjs';
 export class AppService {
   constructor(private readonly httpService: HttpService) { }
 
-  listUsers(number): number {
-    return number;
+  async listUsers(since) {
+    const url = `https://api.github.com/users?since=${since}&per_page=1`;
+    const { data } = await firstValueFrom(this.httpService.get(url));
+    const nextPage = `http://localhost:3000/api/users?since=${parseInt(since) + 1}&per_page=1`;
+    return { nextPage, data };
   }
 
   async userDetails(name) {
