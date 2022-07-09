@@ -18,15 +18,65 @@ describe('AppController (e2e)', () => {
   });
 
   it('should return user github details', () => {
-    const data = { "login": "KozielGPC", "id": 37910437, "node_id": "MDQ6VXNlcjM3OTEwNDM3", "avatar_url": "https://avatars.githubusercontent.com/u/37910437?v=4", "gravatar_id": "", "url": "https://api.github.com/users/KozielGPC", "html_url": "https://github.com/KozielGPC", "followers_url": "https://api.github.com/users/KozielGPC/followers", "following_url": "https://api.github.com/users/KozielGPC/following{/other_user}", "gists_url": "https://api.github.com/users/KozielGPC/gists{/gist_id}", "starred_url": "https://api.github.com/users/KozielGPC/starred{/owner}{/repo}", "subscriptions_url": "https://api.github.com/users/KozielGPC/subscriptions", "organizations_url": "https://api.github.com/users/KozielGPC/orgs", "repos_url": "https://api.github.com/users/KozielGPC/repos", "events_url": "https://api.github.com/users/KozielGPC/events{/privacy}", "received_events_url": "https://api.github.com/users/KozielGPC/received_events", "type": "User", "site_admin": false, "name": "Márcio Gabriel", "company": "UZUM ™ ", "blog": "", "location": "Campo Mourão - PR", "email": null, "hireable": null, "bio": null, "twitter_username": null, "public_repos": 18, "public_gists": 0, "followers": 29, "following": 37, "created_at": "2018-03-29T17:23:24Z", "updated_at": "2022-07-06T19:42:51Z" }
+    const data = {
+      "login": "KozielGPC",
+      "id": 37910437,
+      "node_id": "MDQ6VXNlcjM3OTEwNDM3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/37910437?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/KozielGPC",
+      "html_url": "https://github.com/KozielGPC",
+      "followers_url": "https://api.github.com/users/KozielGPC/followers",
+      "following_url": "https://api.github.com/users/KozielGPC/following{/other_user}",
+      "gists_url": "https://api.github.com/users/KozielGPC/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/KozielGPC/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/KozielGPC/subscriptions",
+      "organizations_url": "https://api.github.com/users/KozielGPC/orgs",
+      "repos_url": "https://api.github.com/users/KozielGPC/repos",
+      "events_url": "https://api.github.com/users/KozielGPC/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/KozielGPC/received_events",
+      "type": "User",
+      "site_admin": false,
+      "name": "Márcio Gabriel",
+      "company": "UZUM ™ ",
+      "blog": "",
+      "location": "Campo Mourão - PR",
+      "email": null,
+      "hireable": null,
+      "bio": null,
+      "twitter_username": null,
+      "public_repos": 18,
+      "public_gists": 0,
+      "followers": 29,
+      "following": 37,
+      "created_at": "2018-03-29T17:23:24Z",
+      "updated_at": "2022-07-06T19:42:51Z",
+      "private_gists": 0,
+      "total_private_repos": 6,
+      "owned_private_repos": 6,
+      "disk_usage": 38158,
+      "collaborators": 0,
+      "two_factor_authentication": false,
+      "plan": {
+        "name": "pro",
+        "space": 976562499,
+        "collaborators": 0,
+        "private_repos": 9999
+      }
+    }
     return request(app.getHttpServer()).get('/api/users/kozielgpc/details')
       .expect(200)
       .expect(data)
   })
 
-  it('should return status 500 for user details because user does not exist', () => {
+  it('should return status 404 for user details because user was not found', () => {
+    const data = {
+      "statusCode": 404,
+      "message": "User with this username could not be found"
+    }
     return request(app.getHttpServer()).get('/api/users/kozielgggggpc/details')
-      .expect(500)
+      .expect(404)
+      .expect(data)
   })
 
   it('should return the next 10 users starting on id 5 and the link for the next page', () => {
@@ -335,14 +385,19 @@ describe('AppController (e2e)', () => {
         "allow_forking": true,
         "is_template": false,
         "web_commit_signoff_required": false,
-        "topics": [
-
-        ],
+        "topics": [],
         "visibility": "public",
         "forks": 0,
         "open_issues": 35,
         "watchers": 1,
-        "default_branch": "master"
+        "default_branch": "master",
+        "permissions": {
+          "admin": true,
+          "maintain": true,
+          "push": true,
+          "triage": true,
+          "pull": true
+        }
       },
       {
         "id": 268157414,
@@ -436,14 +491,19 @@ describe('AppController (e2e)', () => {
         "allow_forking": true,
         "is_template": false,
         "web_commit_signoff_required": false,
-        "topics": [
-
-        ],
+        "topics": [],
         "visibility": "public",
         "forks": 0,
         "open_issues": 2,
         "watchers": 0,
-        "default_branch": "master"
+        "default_branch": "master",
+        "permissions": {
+          "admin": true,
+          "maintain": true,
+          "push": true,
+          "triage": true,
+          "pull": true
+        }
       },
       {
         "id": 304165574,
@@ -537,14 +597,19 @@ describe('AppController (e2e)', () => {
         "allow_forking": true,
         "is_template": false,
         "web_commit_signoff_required": false,
-        "topics": [
-
-        ],
+        "topics": [],
         "visibility": "public",
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "default_branch": "master"
+        "default_branch": "master",
+        "permissions": {
+          "admin": true,
+          "maintain": true,
+          "push": true,
+          "triage": true,
+          "pull": true
+        }
       },
       {
         "id": 269180376,
@@ -638,14 +703,19 @@ describe('AppController (e2e)', () => {
         "allow_forking": true,
         "is_template": false,
         "web_commit_signoff_required": false,
-        "topics": [
-
-        ],
+        "topics": [],
         "visibility": "public",
         "forks": 0,
         "open_issues": 20,
         "watchers": 1,
-        "default_branch": "master"
+        "default_branch": "master",
+        "permissions": {
+          "admin": true,
+          "maintain": true,
+          "push": true,
+          "triage": true,
+          "pull": true
+        }
       },
       {
         "id": 305790319,
@@ -739,14 +809,19 @@ describe('AppController (e2e)', () => {
         "allow_forking": true,
         "is_template": false,
         "web_commit_signoff_required": false,
-        "topics": [
-
-        ],
+        "topics": [],
         "visibility": "public",
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "default_branch": "master"
+        "default_branch": "master",
+        "permissions": {
+          "admin": true,
+          "maintain": true,
+          "push": true,
+          "triage": true,
+          "pull": true
+        }
       },
       {
         "id": 150677825,
@@ -840,14 +915,19 @@ describe('AppController (e2e)', () => {
         "allow_forking": true,
         "is_template": false,
         "web_commit_signoff_required": false,
-        "topics": [
-
-        ],
+        "topics": [],
         "visibility": "public",
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "default_branch": "master"
+        "default_branch": "master",
+        "permissions": {
+          "admin": true,
+          "maintain": true,
+          "push": true,
+          "triage": true,
+          "pull": true
+        }
       },
       {
         "id": 291077212,
@@ -941,14 +1021,19 @@ describe('AppController (e2e)', () => {
         "allow_forking": true,
         "is_template": false,
         "web_commit_signoff_required": false,
-        "topics": [
-
-        ],
+        "topics": [],
         "visibility": "public",
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "default_branch": "master"
+        "default_branch": "master",
+        "permissions": {
+          "admin": true,
+          "maintain": true,
+          "push": true,
+          "triage": true,
+          "pull": true
+        }
       },
       {
         "id": 304039531,
@@ -1042,14 +1127,19 @@ describe('AppController (e2e)', () => {
         "allow_forking": true,
         "is_template": false,
         "web_commit_signoff_required": false,
-        "topics": [
-
-        ],
+        "topics": [],
         "visibility": "public",
         "forks": 1,
         "open_issues": 0,
         "watchers": 0,
-        "default_branch": "main"
+        "default_branch": "main",
+        "permissions": {
+          "admin": true,
+          "maintain": true,
+          "push": true,
+          "triage": true,
+          "pull": true
+        }
       },
       {
         "id": 184180436,
@@ -1143,14 +1233,19 @@ describe('AppController (e2e)', () => {
         "allow_forking": true,
         "is_template": false,
         "web_commit_signoff_required": false,
-        "topics": [
-
-        ],
+        "topics": [],
         "visibility": "public",
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "default_branch": "master"
+        "default_branch": "master",
+        "permissions": {
+          "admin": true,
+          "maintain": true,
+          "push": true,
+          "triage": true,
+          "pull": true
+        }
       },
       {
         "id": 210589835,
@@ -1244,14 +1339,19 @@ describe('AppController (e2e)', () => {
         "allow_forking": true,
         "is_template": false,
         "web_commit_signoff_required": false,
-        "topics": [
-
-        ],
+        "topics": [],
         "visibility": "public",
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "default_branch": "master"
+        "default_branch": "master",
+        "permissions": {
+          "admin": true,
+          "maintain": true,
+          "push": true,
+          "triage": true,
+          "pull": true
+        }
       },
       {
         "id": 304086347,
@@ -1345,14 +1445,19 @@ describe('AppController (e2e)', () => {
         "allow_forking": true,
         "is_template": false,
         "web_commit_signoff_required": false,
-        "topics": [
-
-        ],
+        "topics": [],
         "visibility": "public",
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "default_branch": "master"
+        "default_branch": "master",
+        "permissions": {
+          "admin": true,
+          "maintain": true,
+          "push": true,
+          "triage": true,
+          "pull": true
+        }
       },
       {
         "id": 271102737,
@@ -1446,14 +1551,19 @@ describe('AppController (e2e)', () => {
         "allow_forking": true,
         "is_template": false,
         "web_commit_signoff_required": false,
-        "topics": [
-
-        ],
+        "topics": [],
         "visibility": "public",
         "forks": 0,
         "open_issues": 2,
         "watchers": 1,
-        "default_branch": "master"
+        "default_branch": "master",
+        "permissions": {
+          "admin": true,
+          "maintain": true,
+          "push": true,
+          "triage": true,
+          "pull": true
+        }
       },
       {
         "id": 225634057,
@@ -1547,14 +1657,19 @@ describe('AppController (e2e)', () => {
         "allow_forking": true,
         "is_template": false,
         "web_commit_signoff_required": false,
-        "topics": [
-
-        ],
+        "topics": [],
         "visibility": "public",
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "default_branch": "master"
+        "default_branch": "master",
+        "permissions": {
+          "admin": true,
+          "maintain": true,
+          "push": true,
+          "triage": true,
+          "pull": true
+        }
       },
       {
         "id": 215188383,
@@ -1648,14 +1763,19 @@ describe('AppController (e2e)', () => {
         "allow_forking": true,
         "is_template": false,
         "web_commit_signoff_required": false,
-        "topics": [
-
-        ],
+        "topics": [],
         "visibility": "public",
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "default_branch": "master"
+        "default_branch": "master",
+        "permissions": {
+          "admin": true,
+          "maintain": true,
+          "push": true,
+          "triage": true,
+          "pull": true
+        }
       },
       {
         "id": 150009788,
@@ -1749,14 +1869,19 @@ describe('AppController (e2e)', () => {
         "allow_forking": true,
         "is_template": false,
         "web_commit_signoff_required": false,
-        "topics": [
-
-        ],
+        "topics": [],
         "visibility": "public",
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "default_branch": "master"
+        "default_branch": "master",
+        "permissions": {
+          "admin": true,
+          "maintain": true,
+          "push": true,
+          "triage": true,
+          "pull": true
+        }
       },
       {
         "id": 289934475,
@@ -1850,14 +1975,19 @@ describe('AppController (e2e)', () => {
         "allow_forking": true,
         "is_template": false,
         "web_commit_signoff_required": false,
-        "topics": [
-
-        ],
+        "topics": [],
         "visibility": "public",
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "default_branch": "master"
+        "default_branch": "master",
+        "permissions": {
+          "admin": true,
+          "maintain": true,
+          "push": true,
+          "triage": true,
+          "pull": true
+        }
       },
       {
         "id": 184361850,
@@ -1951,14 +2081,19 @@ describe('AppController (e2e)', () => {
         "allow_forking": true,
         "is_template": false,
         "web_commit_signoff_required": false,
-        "topics": [
-
-        ],
+        "topics": [],
         "visibility": "public",
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "default_branch": "master"
+        "default_branch": "master",
+        "permissions": {
+          "admin": true,
+          "maintain": true,
+          "push": true,
+          "triage": true,
+          "pull": true
+        }
       },
       {
         "id": 291841055,
@@ -2058,14 +2193,19 @@ describe('AppController (e2e)', () => {
         "allow_forking": true,
         "is_template": false,
         "web_commit_signoff_required": false,
-        "topics": [
-
-        ],
+        "topics": [],
         "visibility": "public",
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "default_branch": "master"
+        "default_branch": "master",
+        "permissions": {
+          "admin": true,
+          "maintain": true,
+          "push": true,
+          "triage": true,
+          "pull": true
+        }
       }
     ]
 
@@ -2074,9 +2214,14 @@ describe('AppController (e2e)', () => {
       .expect(data)
   })
 
-  it('should return status 500 for user repos because user does not exist', () => {
+  it('should return status 404 for user repos because user was not found', () => {
+    const data = {
+      "statusCode": 404,
+      "message": "User with this username could not be found"
+    }
     return request(app.getHttpServer()).get('/api/users/kozielgggggpc/repos')
-      .expect(500)
+      .expect(404)
+      .expect(data)
   })
 
 });
