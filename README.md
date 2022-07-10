@@ -1,6 +1,7 @@
 ## Description
 
-REST API developed to consume the GitHub API, using NodeJS with NestJS, and Jest for e2e tests
+REST API developed to consume the GitHub API <br>
+Main Technologies: [NodeJS](https://nodejs.dev) with [NestJS](https://nestjs.com), and [Jest](https://jestjs.io) for e2e and unit tests
 
 ## Live demo
 
@@ -24,7 +25,7 @@ $ npm install
 ```bash
 $ cp .env.example .env
 ```
-
+Set your [Github Token](https://github.com/settings/tokens) in `GITHUB_TOKEN` <br>
 Set your API link in `API_URL`
 - example: http://localhost:3000
 
@@ -37,6 +38,13 @@ $ npm run start:dev
 ```
 
 ## Test
+
+The tests were written following the github api documentation and their possible responses
+
+* Note: `should return the users github informations` test may fail because of `disk_usage` difference
+
+![image](https://user-images.githubusercontent.com/37910437/178146234-bb37bd12-bc43-473f-9b44-1bbc3a7e30a5.png)
+
 
 ```bash
 # unit tests
