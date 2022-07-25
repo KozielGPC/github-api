@@ -15,6 +15,14 @@ https://github-api-sap.herokuapp.com
 
 - GET - /api/users/:username/repos - This endpoint must return a list with all user repositories
 
+
+## Docker
+
+Run the app with docker or follow the steps bellow
+```bash
+$ docker-compose up
+```
+
 ## Installation
 
 ```bash
